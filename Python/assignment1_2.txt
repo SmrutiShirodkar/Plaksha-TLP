@@ -1,0 +1,238 @@
+'''
+#Question 1:
+import random
+a=[]
+n=15
+for i in range(n):
+  a.append(random.randint(0,n))
+print(a)
+def bbsort(a):
+  n=len(a) 
+  for i in range(n):
+      for j in range(n-i-1):
+          if(a[j] > a[j+1]):
+            a[j+1], a[j] = a[j], a[j+1]
+  return a
+print(bbsort(a))
+def slsort(a):
+  n=len(a)
+  for i in range(n):
+    min_indx = i
+    for j in range(i+1, n):
+      if a[min_indx]>a[j]:
+        min_indx=j
+        a[i],a[min_indx]=a[min_indx],a[i]
+  return a
+print(slsort(a))
+L=[0,0,1,2,1,3,9,4,7,5,7,8,8,2,4]
+print(bbsort(L))
+Ll=[]
+N= int(input("Enter your length of list L: "))
+for i in range(N):
+  Ll.append(random.randint(0,n))
+print(Ll)
+for i in range(n):
+  #how to create duplicate list
+print(r)
+def linear_search(a, x):
+    for i in range(len(a)):
+        if a[i] == x:
+            return i
+    return -1
+def binary_search(a, x):
+    low = 0
+    high = len(a) - 1
+    mid = 0
+    while low <= high:
+        mid = (high + low) // 2
+        # If x is greater, ignore left half
+        if arr[mid] < x:
+            low = mid + 1
+        # If x is smaller, ignore right half
+        elif arr[mid] > x:
+            high = mid - 1
+        # means x is present at mid
+        else:
+            return mid
+
+    # If we reach here, then the element was not present
+    return -1
+ 
+# Function call
+result = binary_search(arr, x)
+ 
+if result != -1:
+    print("Element is present at index", str(result))
+else:
+    print("Element is not present in array")
+
+'''
+'''
+#Question 2:
+def fact(n): #defin the function for factorial of number n
+  if n < 0: #checks if the number is small than 0 for negative numbers
+   print("Sorry, factorial does not exist for negative numbers")
+  elif (n == 0 or n==1): #else, the number is equal to 0
+   return 1 #if number is equal to 1, returns 1
+  else:
+      return n*fact(n-1) #else it returns the factorial of number by multiplying with its preceeding number. Eg. 5!=5*4*3*2*1=120
+print("enter n") #take the number as input
+n=int(input()) #assign the number to the variable 'n' which is an integer
+print(fact(n))
+'''
+'''
+#Question 3:
+def fibo(n):
+   if n <= 1:
+       return n
+   else:
+       return(fibo(n-1) + fibo(n-2))
+n = int(input())
+if n <= 0: # check if the number of terms is valid
+   print("Enter positive integer") 
+else:
+   print("Fibonacci sequence:")
+   for i in range(n):
+       print(fibo(i))
+'''
+'''
+#Question 4
+def armstrong_num(N):
+  # initializing Sum and count of Digits
+  sum1 = 0
+  i = 0
+
+  # Calculating Number of individual digits
+  N2=N
+  while(N2>0):
+    i=i+1
+    N2=N2//10
+
+  # Finding Armstrong Number
+  N2=N
+  while N2>0:
+   rem = N2% 10
+   sum1 += rem ** i
+   N2//= 10
+  return sum1 
+  # End of Function
+
+N = int(input('Enter a number: '))
+if(N==armstrong_num(N)):
+    print('Armstrong!!')
+else:
+    print('Not Armstrong!')
+
+#Question 5
+
+def pascal_triangle(n):
+  trow = [1]
+  y = [0]
+  #  if n>0:
+  for x in range(n):
+      print(trow)
+      a = trow+y
+      b = y+trow
+      trow = []
+      for l,r in zip(a,b):
+        trow.append(l+r)
+  return n>=1
+n=int(input())
+print(pascal_triangle(n))
+'''
+'''
+#Question 6
+def revrse_num(m):
+  rev_num=0
+  flag = False
+  if m<0:
+    N = -1*m
+    flag = True
+  else:
+    N = m 
+  while (N>0): 
+    remainder = N%10  
+    rev_num = (rev_num*10) + remainder  
+    N = N//10 
+  if flag:
+    rev_num = -1*rev_num
+  return rev_num
+N = int(input('Enter a number: '))
+print(revrse_num(N))
+'''
+'''
+#Question 7
+def three_sum(L):
+  n = len(L)  #length of list
+  final=[]
+  res = []
+  for i in range(n):
+    for j in range(n):
+      for k in range(n):
+        if i!=j and i!=k and j!=k:
+          if L[i]+L[j]+L[k]==0:
+           final.append(sorted([L[i],L[j],L[k]]))
+  for i in final:
+    if i not in res:
+      res.append(i)
+  return res
+a=[-1,0,1, 2, 3, 2,0,-2,-3,2,1]
+res = three_sum(a)
+print(res)
+'''
+'''
+#Question 8
+import random
+def min_flowers(n):
+  flowers=[]
+  ratings=[]
+  for i in range(n):
+    flowers.append(1)
+    ratings.append(random.randint(0,n))
+  ratings = [8, 10, 9, 3, 2, 4, 9, 2, 6, 3]
+    #ratings.sort() (shouldnt break when sorted-fix)
+  print("ratings", ratings)
+  # print(flowers)
+  for i in range(0,n-1):
+    # if ratings[i]>ratings[i+1]:
+    #   flowers[i]=flowers[i+1]+1
+    if ratings[i+1] > ratings[i]:
+      flowers[i+1] = flowers[i] + 1
+  print("Halfway", flowers)
+  for j in range(n-1,0,-1):
+    if ratings[j] > ratings[j-1] and flowers[j]<=flowers[j-1]:
+      flowers[j]=flowers[j-1]+1
+  # print("flowers", flowers)
+  return sum(flowers)
+# n=int(input())
+n = 10
+print(min_flowers(n))
+#with more advantage over neighbours, one should have more flowers
+'''
+#Question 8 (reattempt)
+import random
+def brides_maid(ratings):
+  print("ratings", ratings)
+  n = len(ratings)
+  flowers = []
+  for i in range(n):
+    flowers.append(1)
+  m = n
+  i = 0
+  j = n-1
+  while m > 1:
+    if ratings[i] < ratings[i+1]:
+      flowers[i+1] = flowers[i] + 1
+    i += 1
+    m -= 1
+  while n > 0:
+    if ratings[j-1] > ratings[j] and flowers[j] >= flowers[j-1]:
+      flowers[j-1] = flowers[j]+1
+    j -= 1
+    n -= 1
+  print("flowers", flowers)
+  return sum(flowers)
+
+n = int(input("Enter n: "))
+ratings = [random.randint(0, 10) for i in range(n)]
+print(brides_maid(ratings))
